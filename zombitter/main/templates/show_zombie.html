@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>{{zombie.name}} -Blog</title>
+</head>
+<body>
+	<a href = "{% url home %}">Home</a>
+	<h1>{{zombie.name}}</h1>
+	</br>Of the graveyard: {{zombie.graveyard}}
+	</br><pre><a href="{% url show_zombie zombie.id %}/edit">edit me</a>   <a href="{% url show_zombie zombie.id %}/delete" >delete me</a></pre>
+	<p>{% for twitt in twitts %}
+		<div><b>{{twitt.status}}</b> at {{twitt.created_at}}
+		</div>
+		{% endfor %}
+	</p>
+</body>
+</html>

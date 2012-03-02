@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Zombitter</title>
+</head>
+<body>
+    <div>
+        <h1>Zombitter</h1>
+        <h4>Know what happens in zombie's world</h4>
+    </div>
+    <a href="{% url add_zombie %}" >add zombie</a>
+    <a href="{% url add_twitt %}" >add twitt</a>
+    {% for twitt in twitts %}
+    <div>
+        <p><font size=5><b>{{ twitt.status }}</font></b>
+        </br><font size=2>By <a href="{% url show_zombie twitt.zombie.id %}" >{{ twitt.zombie.name }}</a> at {{ twitt.created_at }}</font>
+    </br> <pre><a href="{% url show_twitt twitt.id %}/edit" >edit twitt </a>  <a href="{% url show_twitt twitt.id %}/delete" >delete twitt</a></pre></p>
+    </br></br>
+    </div>
+    {% endfor %}
+</body>
+</html>
