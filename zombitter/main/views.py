@@ -1,11 +1,11 @@
 from django.shortcuts import render_to_response, redirect, get_object_or_404
-#from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_page
 from django.template import RequestContext
 from main.models import Twitt, Zombie
 from main.forms import TwittForm, ZombieForm
 
 
-#@cache_page(60 * 15)
+@cache_page(60 * 15)
 def home(request):
     twitts = Twitt.objects.all()
     return render_to_response('home.html', {
@@ -13,7 +13,7 @@ def home(request):
     })
 
 
-#@cache_page(60 * 15)
+@cache_page(60 * 15)
 def show_zombie(request, pk):
     zombie = Zombie.objects.get(pk=pk)
     twitts = Twitt.objects.filter(zombie=pk)
